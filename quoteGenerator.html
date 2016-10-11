@@ -16,11 +16,24 @@
         </div>
         
         <script type=text/javascript>
+            //ARRAY OF STRINGS TO USE AS QUOTES
+            var myQuotes = ["The best thing about a boolean is even if you are wrong, you are only off by a bit. ",
+            "There are two ways to write error-free programs; only the third one works.",
+            "One man’s crappy software is another man’s full time job.",
+            "A good programmer is someone who always looks both ways before crossing a one-way street."," It's hard enough to find an error in your code when you're looking for it; it's even harder when you've assumed your code is error-free.","Computers are good at following instructions, but not at reading your mind."]
+            
+            //GENERATE A RANDOM NUMBER OF THE SIZE OF ARRAY
+           
+            function randomQuote(){
+            var randomNumber = Math.floor((Math.random() * myQuotes.length) + 1);
+            return randomNumber; 
+            }
+            
             
             $("#quoteGeneratorBtn").click(function(){
                //Update quote everytime button is clicked
-                $("#quote").html("ive been clicked"); 
-                
+                $("#quote").html(myQuotes[randomQuote()]);   
+                //(this).text("<p id=&quot quote &quot> I've been clicked</p>");
             });
         
         </script>
