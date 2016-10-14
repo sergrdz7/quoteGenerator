@@ -16,7 +16,7 @@
                 
                 <!--add icon mage for twitter sharing-->
                 <div id="twitterButton">  
-                    <a  href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>   
+                    <a  href="https://twitter.com/share" class="twitter-share-button" data-text="This is my tweet" data-hashtags="codingquotes,devproblems" data-size="large" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>   
                 </div>
             </div>
         </div>
@@ -35,16 +35,32 @@
             "First learn computer science and all the theory. Next develop a programming style. Then forget all that and just hack.",
             "The trouble with programmers is that you can never tell what a programmer is doing until it’s too late."]
             
+            //ARRAY OF SELECTED HEX COLORS
+            var colorArray = ["#003F87","#006B54","#0099CC","#00C78C","#2B2B2B","#2F4F4F","#302B54","#55141C","#8968CD","#8A360F","#8B3A3A","#C65D57"];
+            
             //GENERATE A RANDOM NUMBER OF THE SIZE OF ARRAY
             function randomQuote(){
             var randomNumber = Math.floor((Math.random() * myQuotes.length) + 1);
             return randomNumber; 
             }
             
+            //GENERATE RANDOM COLOR THEMES 
+            function randomColorGenerator(){
+                var randomColor = Math.floor((Math.random() * colorArray.length) + 1);
+                return randomColor;
+            }
+            //PLACE QUOTE BEFORE CLICKING BUTTON
+            $("#quote").html(myQuotes[0]);
             //ADD LISTENER CLICK LISTENER 
             $("#quoteGeneratorBtn").click(function(){
-               //UPDATE QUOTE EVERYTIME BTN IS CLICKED
-                $("#quote").html(myQuotes[randomQuote()]);   
+                //UPDATE QUOTE EVERYTIME BTN IS CLICKED
+                $("#quote").html(myQuotes[randomQuote()]);
+                //UPDATE CSS COLORS
+                var newColor = colorArray[randomColorGenerator()];
+                $("#container").css("background-color", newColor);
+                $("#quote").css("color", newColor);
+                $("#quoteGeneratorBtn").css("background-color", newColor);
+                
             });
         
         </script>
