@@ -5,22 +5,28 @@
         
         <script type="text/javascript" src="jquery-3.1.0.min.js"></script>    
         <link rel="stylesheet" type="text/css" href="quoteGenerator.css">
-        
+        <!--FONT AWESOME CDN-->
+        <script src="https://use.fontawesome.com/c7e7b33a87.js"></script>
     </head>
     <body>
     
         <div id="container">
             <div id="quoteBox">
                 <p id="quote"></p>
-                <button id="quoteGeneratorBtn">Get_Quote()</button>
+                <button id ="quoteBtn" class="button">New Quote</button>
                 
-                <!--add icon mage for twitter sharing-->
+                <!--add icon Image for twitter sharing-->
                 <div id="twitterButton">  
-                    <a  href="https://twitter.com/share" class="twitter-share-button" data-text="This is my tweet" data-hashtags="codingquotes,devproblems" data-size="large" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>   
+<!--                    <a  href="https://twitter.com/share" class="twitter-share-button" data-text="This is my tweet" data-hashtags="codingquotes,devproblems" data-size="large" data-show-count="false">Tweet</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>   -->
+                    
+                <button id="tweetBtn" class="button"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></button>    
                 </div>
             </div>
+            <div id="footerContainer">
+                <a href="https://codepen.io/serg_92/" id="footerLink">by Sergio</a>
+            </div>
         </div>
-        
+
         <script type=text/javascript>
             //ARRAY OF STRINGS TO USE AS QUOTES
             var myQuotes = ["The best thing about a boolean is even if you are wrong, you are only off by a bit.",
@@ -40,27 +46,42 @@
             
             //GENERATE A RANDOM NUMBER OF THE SIZE OF ARRAY
             function randomQuote(){
-            var randomNumber = Math.floor((Math.random() * myQuotes.length) + 1);
+            var randomNumber = Math.floor((Math.random() * myQuotes.length));
             return randomNumber; 
             }
             
             //GENERATE RANDOM COLOR THEMES 
             function randomColorGenerator(){
-                var randomColor = Math.floor((Math.random() * colorArray.length) + 1);
+                var randomColor = Math.floor((Math.random() * colorArray.length));
                 return randomColor;
             }
+            //FUNCTIONS FROM FFC 
+            function inIframe () { try { return window.self !== window.top; } catch (e) { return true; } }
+            //MAKE NEW TWITTER WINDOW
+            function openURL(url){
+                window.open(url, 'Share', 'width=550, height=400, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
+            }
+            
             //PLACE QUOTE BEFORE CLICKING BUTTON
-            $("#quote").html(myQuotes[0]);
-            //ADD LISTENER CLICK LISTENER 
-            $("#quoteGeneratorBtn").click(function(){
+            var currentQuote = myQuotes[randomQuote()];
+            $("#quote").html('"'+currentQuote+'"');
+            //ADD CLICK LISTENER TO QUOTE BUTTON
+            $("#quoteBtn").click(function(){
                 //UPDATE QUOTE EVERYTIME BTN IS CLICKED
-                $("#quote").html(myQuotes[randomQuote()]);
+                currentQuote = myQuotes[randomQuote()];
+                $("#quote").html('"'+currentQuote+'"');
                 //UPDATE CSS COLORS
                 var newColor = colorArray[randomColorGenerator()];
                 $("#container").css("background-color", newColor);
                 $("#quote").css("color", newColor);
-                $("#quoteGeneratorBtn").css("background-color", newColor);
-                
+                $(".button").css("background-color", newColor);
+            
+            });
+            //ADD CLICK LISTENER TO TWEET BTN 
+            $("#tweetBtn").click(function(){
+                if(!inIframe()){
+                   openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + '"' + currentQuote + '"');
+               } 
             });
         
         </script>
