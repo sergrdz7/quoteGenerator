@@ -13,6 +13,7 @@
         <div id="container">
             <div id="quoteBox">
                 <p id="quote"></p>
+                <p id="author"></p>
                 <button id ="quoteBtn" class="button">New Quote</button>
                 
                 <!--add icon Image for twitter sharing-->
@@ -29,24 +30,48 @@
 
         <script type=text/javascript>
             //ARRAY OF STRINGS TO USE AS QUOTES
-            var myQuotes = ["The best thing about a boolean is even if you are wrong, you are only off by a bit.",
-            "There are two ways to write error-free programs; only the third one works.",
-            "One man’s crappy software is another man’s full time job.",
-            "A good programmer is someone who always looks both ways before crossing a one-way street.",
-            "It's hard enough to find an error in your code when you're looking for it; it's even harder when you've assumed your code is error-free.",
-            "Computers are good at following instructions, but not at reading your mind.",
-            "Talk is cheap. Show me the code.",
-            "In theory, theory and practice are the same. In practice, they’re not.",
-            "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday's code.",
-            "First learn computer science and all the theory. Next develop a programming style. Then forget all that and just hack.",
-            "The trouble with programmers is that you can never tell what a programmer is doing until it’s too late."]
+// old quote method////////////////////////////            
+//            var myQuotes = ["The best thing about a boolean is even if you are wrong, you are only off by a bit.",
+//            "There are two ways to write error-free programs; only the third one works.",
+//            "One man’s crappy software is another man’s full time job.",
+//            "A good programmer is someone who always looks both ways before crossing a one-way street.",
+//            "It's hard enough to find an error in your code when you're looking for it; it's even harder when you've assumed your code is error-free.",
+//            "Computers are good at following instructions, but not at reading your mind.",
+//            "Talk is cheap. Show me the code.",
+//            "In theory, theory and practice are the same. In practice, they’re not.",
+//            "Sometimes it pays to stay in bed on Monday, rather than spending the rest of the week debugging Monday's code.",
+//            "First learn computer science and all the theory. Next develop a programming style. Then forget all that and just hack.",
+//            "The trouble with programmers is that you can never tell what a programmer is doing until it’s too late."]
+            
+            var quotes = {
+                author: ["Thomas A. Edison", "George Bernard Shaw", "Charles Darwin", "Ray Goforth","Winston Churchill","Walt Disney","Richard L. Evans","Mary Manin Morrissey","Maxwell Maltz","Harrison Ford","Kevin Ngo","Gandhi","Maya Angelou","Jim Rohn","J.P. Morgan","Mark Zuckerberg"],
+                quote: ["Many of life’s failures are people who did not realize how close they were to success when they gave up.",
+                        "Success does not consist in never making mistakes but in never making the same one a second time.",
+                        "It is not the strongest of the species that survive, nor the most intelligent, but the one most responsive to change.",
+                        "There are two types of people who will tell you that you cannot make a difference in this world: those who are afraid to try and those who are afraid you will succeed.",
+                        "Success is walking from failure to failure with no loss of enthusiasm.",
+                        "All our dreams can come true if we have the courage to pursue them.",
+                        "Don’t let life discourage you; everyone who got where he is had to begin where he was.",
+                        "Don’t wait for something big to occur. Start where you are, with what you have, and that will always lead you into something greater.",
+                        "Often the difference between a successful person and a failure is not one has better abilities or ideas, but the courage that one has to bet on one’s ideas, to take a calculated risk – and to act.",
+                        "I realized early on that success was tied to not giving up. Most people in this business gave up and went on to other things. If you simply didn’t give up, you would outlast the people who came in on the bus with you.",
+                        "If you don’t make the time to work on creating the life you want, you’re eventually going to be forced to spend a LOT of time dealing with a life you DON’T want.",
+                        "If I have the belief that I can do it, I shall surely acquire the capacity to do it even if I may not have it at the beginning.",
+                        "If you don’t like something, change it. If you can’t change it, change your attitude.",
+                        "Formal education will make you a living; self-education will make you a fortune.",
+                        "The first step towards getting somewhere is to decide that you are not going to stay where you are.",
+                        "In a world that’s changing really quickly, the only strategy that is guaranteed to fail is not taking risks."]
+            };
+            console.log(quotes.author[0]);
+            console.log(quotes.quote[0]);
+            console.log(quotes.quote.length);
             
             //ARRAY OF SELECTED HEX COLORS
             var colorArray = ["#003F87","#006B54","#0099CC","#00C78C","#2B2B2B","#2F4F4F","#302B54","#55141C","#8968CD","#8A360F","#8B3A3A","#C65D57"];
             
             //GENERATE A RANDOM NUMBER OF THE SIZE OF ARRAY
             function randomQuote(){
-            var randomNumber = Math.floor((Math.random() * myQuotes.length));
+            var randomNumber = Math.floor((Math.random() * quotes.quote.length));
             return randomNumber; 
             }
             
@@ -63,17 +88,29 @@
             }
             
             //PLACE QUOTE BEFORE CLICKING BUTTON
-            var currentQuote = myQuotes[randomQuote()];
-            $("#quote").html('"'+currentQuote+'"');
+//            var currentQuote = myQuotes[randomQuote()];
+//            $("#quote").html('"'+currentQuote+'"');
+//            
+            //Updated function//////////////
+            
+            var currentQuote = quotes.quote[randomQuote()];
+            $("#quote").html('"'+currentQuote+'"'); 
+            var currentAuthor = quotes.author[randomQuote()];
+            $("#author").html('-' + currentAuthor);
+            
+            
             //ADD CLICK LISTENER TO QUOTE BUTTON
             $("#quoteBtn").click(function(){
-                //UPDATE QUOTE EVERYTIME BTN IS CLICKED
-                currentQuote = myQuotes[randomQuote()];
+                //UPDATE QUOTE & AUTHOR EVERYTIME BTN IS CLICKED
+                currentQuote = quotes.quote[randomQuote()];
                 $("#quote").html('"'+currentQuote+'"');
+                currentAuthor = quotes.author[randomQuote()];
+                $("#author").html('-'+ currentAuthor);
                 //UPDATE CSS COLORS
                 var newColor = colorArray[randomColorGenerator()];
                 $("#container").css("background-color", newColor);
                 $("#quote").css("color", newColor);
+                $("#author").css("color", newColor);
                 $(".button").css("background-color", newColor);
             
             });

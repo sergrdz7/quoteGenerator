@@ -24,15 +24,17 @@ body{
     width: 50%;
     height: auto;
     padding: 45px;
-    border-radius: 20px;
-    
-
-    
-    
+    border-radius: 20px;  
 }
 
 #quote {
-    font-size: 22px;
+    font-size: 25px;
+}
+
+#author{
+    font-size: 22px; 
+    text-align: right;
+    font-style: italic; 
 }
 
 /*CUSTOMIZE QUOTE GENERATOR BUTTON**/
