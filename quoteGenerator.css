@@ -12,6 +12,7 @@ body{
     width: auto; 
     height: 800px; 
     margin: 0 auto;
+    
 }
 
 #quoteBox{
@@ -24,11 +25,14 @@ body{
     width: 50%;
     height: auto;
     padding: 45px;
-    border-radius: 20px;  
+    border-radius: 20px;
+     
 }
 
 #quote {
     font-size: 25px;
+    opacity: 1; 
+    
 }
 
 #author{
@@ -49,14 +53,15 @@ body{
     position: relative;
     bottom: 8px;
         float: left;
-}
 
+}
 .button:focus{
     outline: 0;
 }
 .button:hover {
 cursor: pointer;
 background-color: #25439f;
+    
 }
 
 /*CUSTOMYIZE TWITTER BTN*/
@@ -92,4 +97,28 @@ blockquote.twitter-tweet a[href^="https://twitter.com"] {
     margin: 0 auto;
     position: relative;
     top: 30%;
+}
+
+/*DELAY BACKGROUND AND TXT COLOR*/
+.delayBackgroundColor{
+    -webkit-transition:background 2s;
+    -moz-transition:background 2s;
+    -o-transition:background 2s;
+    transition:background 2s; 
+}
+
+.delayTextColor{
+    -webkit-transition:color 2s; 
+    -moz-transition:color 2s; 
+    -o-transition:color 2s; 
+    transition:color 2s; 
+}
+
+.delayText{
+    opacity: 0; 
+    -webkit-transition: opacity 1s ease 2s;
+   -moz-transition: opacity 1s ease 2s;
+     -o-transition: opacity 1s ease 2s;
+    -ms-transition: opacity 1s ease 2s;
+        transition: opacity 1s ease 2s;
 }
