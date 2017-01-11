@@ -31,7 +31,6 @@ body{
 
 #quote {
     font-size: 25px;
-    opacity: 1; 
     
 }
 
@@ -114,11 +113,3 @@ blockquote.twitter-tweet a[href^="https://twitter.com"] {
     transition:color 2s; 
 }
 
-.delayText{
-    opacity: 0; 
-    -webkit-transition: opacity 1s ease 2s;
-   -moz-transition: opacity 1s ease 2s;
-     -o-transition: opacity 1s ease 2s;
-    -ms-transition: opacity 1s ease 2s;
-        transition: opacity 1s ease 2s;
-}
